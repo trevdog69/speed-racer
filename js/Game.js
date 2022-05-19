@@ -84,6 +84,8 @@ addSprites(spriteGroup,numberofsprites,spriteImage,size)
           stroke(10);
           fill("red");
           ellipse(x, y, 60, 60);
+          this.handlefuel(index)
+          this.handlecoin (index)
         }
       }
 
@@ -96,4 +98,17 @@ addSprites(spriteGroup,numberofsprites,spriteImage,size)
       drawSprites();
     }
   }
+  handlefuel(index){
+   cars[index-1].overlap(fuels,function(collector,collected){
+     player.fuel=185 
+     collected.remove()
+   })
+  }
+  handlecoin(index){
+    cars[index-1].overlap(coins,function(collector,collected){
+      player.score+=50
+      player.update 
+      collected.remove()
+    })
+   }
 }
